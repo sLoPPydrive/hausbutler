@@ -1,0 +1,15 @@
+categories:
+  - name: "Erfrischungsgetränke"
+    items:
+      - name: "Cola 0,33l"
+        price: 2.50
+      - name: "Fanta 0,33l"
+        price: 2.50
+      - name: "Sprite 0,33l"
+        price: 2.50
+  - name: "Biere"
+    items:
+      - name: "Pils 0,33l"
+        price: 3.00
+      - name: "Weizen 0,5l"
+        price: 3.80
