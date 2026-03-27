@@ -1,3 +1,4 @@
+// src/routes/+page.svelte
 <script>
   import { onMount } from 'svelte';
   import { browser } from '$app/environment';
@@ -145,10 +146,10 @@
     
     if (newQty === 0) {
       delete quantities[key];
+      quantities = { ...quantities };
     } else {
-      quantities[key] = newQty;
+      quantities = { ...quantities, [key]: newQty };
     }
-    quantities = quantities;
     saveToLocalStorage();
   }
 
