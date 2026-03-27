@@ -1,15 +1,115 @@
 categories:
   - name: "Erfrischungsgetränke"
     items:
-      - name: "Cola 0,33l"
-        price: 2.50
-      - name: "Fanta 0,33l"
-        price: 2.50
-      - name: "Sprite 0,33l"
-        price: 2.50
+      - name: "Wasser 0,7l"
+        price: 2.80
+      - name: "Softdrinks 0,33l"
+        price: 2.40
+      - name: "Säfte (Orange/Apfel) 0,33l"
+        price: 3.00
+      - name: "Malzbier 0,33l"
+        price: 3.00
+      - name: "Fassbrause 0,33l"
+        price: 3.00
+      - name: "Energie 0,5l"
+        price: 4.20
+
   - name: "Biere"
     items:
-      - name: "Pils 0,33l"
-        price: 3.00
-      - name: "Weizen 0,5l"
+      - name: "Pülleken 0,33l"
+        price: 3.20
+      - name: "Grevensteiner Landbier 0,33l"
+        price: 3.20
+      - name: "Veltins/Krombacher 0,33l"
+        price: 2.80
+      - name: "Veltins/Krombacher 0,5l"
         price: 3.80
+      - name: "Weizen 0,5l"
+        price: 4.20
+
+  - name: "Heiß- und Kaltgetränke"
+    items:
+      - name: "Pott Kaffee"
+        price: 3.40
+      - name: "Tee"
+        price: 3.20
+      - name: "Latte Macchiato"
+        price: 3.80
+      - name: "Milchkaffee"
+        price: 3.80
+      - name: "Cappuccino"
+        price: 3.80
+      - name: "Kakao"
+        price: 3.80
+      - name: "Espresso"
+        price: 2.20
+      - name: "Doppelter Espresso"
+        price: 3.80
+      - name: "Eiskaffee/Eisschokolade"
+        price: 4.80
+
+  - name: "Spirituosen"
+    items:
+      - name: "Korn, Kuhstalltango 2cl"
+        price: 2.00
+      - name: "Korn, Kuhstalltango 4cl"
+        price: 4.00
+      - name: "Obstler, Ramazotti 2cl"
+        price: 3.20
+      - name: "Aquavit 2cl"
+        price: 3.20
+      - name: "Wein, Sekt 0,2l"
+        price: 3.80
+      - name: "Wein, Sekt 0,7l"
+        price: 18.00
+      - name: "Glühwein, Grog 0,2l"
+        price: 4.20
+
+  - name: "Waffeln"
+    items:
+      - name: "Natur"
+        price: 2.50
+      - name: "mit Puderzucker"
+        price: 2.50
+      - name: "mit Kirschen oder Eis"
+        price: 3.90
+      - name: "mit Kirschen und Eis"
+        price: 4.50
+      - name: "Portion Sahne"
+        price: 0.50
+
+  - name: "Eis"
+    items:
+      - name: "Wassereis"
+        price: 1.50
+      - name: "Eis am Stiel/Hörnchen"
+        price: 2.00
+      - name: "Kugel Vanilleeis"
+        price: 1.00
+
+  - name: "Erlebnis und Erholung"
+    items:
+      - name: "Kegeln (60 Min.)"
+        price: 9.00
+      - name: "Sauna (20 Min.)"
+        price: 6.00
+      - name: "Fackeln"
+        price: 2.50
+
+  - name: "Reiten"
+    items:
+      - name: "Wanderritt"
+        price: 14.00
+      - name: "Longenstunde"
+        price: 16.00
+      - name: "Freier Ausritt"
+        price: 25.00
+
+  - name: "Zusatzleistungen"
+    items:
+      - name: "Waschmaschine"
+        price: 5.00
+      - name: "Trockner"
+        price: 5.00
+      - name: "Tagespauschale (pro Person)"
+        price: 12.00

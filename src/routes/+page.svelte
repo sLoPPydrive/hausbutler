@@ -7,7 +7,7 @@
   let activeTab = $state(0);
   let quantities = $state({});
   let customItems = $state([]);
-  let yamlUrl = 'https://raw.githubusercontent.com/IHR-USERNAME/IHR-REPO/main/data.yaml';
+  let yamlUrl = 'https://raw.githubusercontent.com/sloppydrive/hausbutler/main/data.yaml';
   let isLoading = $state(true);
   let showAddCustom = $state(false);
   let customName = $state('');
@@ -203,7 +203,7 @@
 </script>
 
 <svelte:head>
-  <title>🏖️ Hausbutler</title>
+  <title>Hubertus Hausbutler</title>
   <meta name="description" content="Digitaler Hausbutler für Ferienwohnungen" />
   <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#b56e4b" />
@@ -215,7 +215,7 @@
     
     <!-- Header -->
     <div class="bg-white shadow-lg p-6">
-      <h1 class="text-3xl font-bold text-indigo-900 mb-2">🏖️ Hausbutler</h1>
+      <h1 class="text-3xl font-bold text-indigo-900 mb-2">Hubertus Hausbutler</h1>
       <p class="text-gray-600">Erfassen Sie Ihren Verbrauch während Ihres Aufenthalts</p>
     </div>
 
