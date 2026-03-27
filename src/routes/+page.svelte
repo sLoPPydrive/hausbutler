@@ -1,4 +1,3 @@
-// src/routes/+page.svelte
 <script>
   import { onMount } from 'svelte';
   import { browser } from '$app/environment';
