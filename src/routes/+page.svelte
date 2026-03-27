@@ -3,15 +3,15 @@
   import { browser } from '$app/environment';
   import { Plus, Minus, Trash2, Receipt, PlusCircle } from 'lucide-svelte';
 
-  let categories = [];
-  let activeTab = 0;
-  let quantities = {};
-  let customItems = [];
+  let categories = $state([]);
+  let activeTab = $state(0);
+  let quantities = $state({});
+  let customItems = $state([]);
   let yamlUrl = 'https://raw.githubusercontent.com/IHR-USERNAME/IHR-REPO/main/data.yaml';
-  let isLoading = true;
-  let showAddCustom = false;
-  let customName = '';
-  let customPrice = '';
+  let isLoading = $state(true);
+  let showAddCustom = $state(false);
+  let customName = $state('');
+  let customPrice = $state('');
 
   const STORAGE_KEY = 'hausbutler_data';
   const CUSTOM_ITEMS_KEY = 'hausbutler_custom_items';
@@ -145,14 +145,13 @@
     
     if (newQty === 0) {
       delete quantities[key];
-      quantities = { ...quantities };
     } else {
-      quantities = { ...quantities, [key]: newQty };
+      quantities[key] = newQty;
     }
     saveToLocalStorage();
   }
 
-  function calculateTotal() {
+  let totalAmount = $derived(() => {
     let total = 0;
     Object.keys(quantities).forEach(key => {
       const [catIdx, itemIdx] = key.split('-').map(Number);
@@ -162,11 +161,11 @@
       }
     });
     return total;
-  }
+  });
 
-  function getTotalItems() {
+  let totalItems = $derived(() => {
     return Object.values(quantities).reduce((sum, qty) => sum + qty, 0);
-  }
+  });
 
   function resetAll() {
     if (confirm('Möchten Sie wirklich alle Einträge zurücksetzen?')) {
@@ -201,16 +200,13 @@
       categories[categories.length - 1].items = customItems;
     }
   }
-
-  $: totalAmount = calculateTotal();
-  $: totalItems = getTotalItems();
 </script>
 
 <svelte:head>
-  <title>Hubertus Hausbutler</title>
+  <title>🏖️ Hausbutler</title>
   <meta name="description" content="Digitaler Hausbutler für Ferienwohnungen" />
   <link rel="manifest" href="/manifest.json" />
-  <meta name="theme-color" content="#4f46e5" />
+  <meta name="theme-color" content="#b56e4b" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 </svelte:head>
 
@@ -219,7 +215,7 @@
     
     <!-- Header -->
     <div class="bg-white shadow-lg p-6">
-      <h1 class="text-3xl font-bold text-indigo-900 mb-2">Hubertus Hausbutler</h1>
+      <h1 class="text-3xl font-bold text-indigo-900 mb-2">🏖️ Hausbutler</h1>
       <p class="text-gray-600">Erfassen Sie Ihren Verbrauch während Ihres Aufenthalts</p>
     </div>
 
@@ -228,7 +224,7 @@
       <div class="flex border-b">
         {#each categories as category, index}
           <button
-            on:click={() => activeTab = index}
+            onclick={() => activeTab = index}
             class="px-6 py-3 font-medium whitespace-nowrap transition-colors {activeTab === index ? 'border-b-2 border-indigo-600 text-indigo-600' : 'text-gray-600 hover:text-indigo-600'}"
           >
             {category.name}
@@ -242,7 +238,7 @@
       {#if activeTab === categories.length - 1}
         <!-- Sonstige Artikel -->
         <button
-          on:click={() => showAddCustom = !showAddCustom}
+          onclick={() => showAddCustom = !showAddCustom}
           class="w-full mb-4 flex items-center justify-center gap-2 p-4 bg-indigo-100 hover:bg-indigo-200 rounded-lg transition-colors"
         >
           <PlusCircle size={20} />
@@ -265,7 +261,7 @@
               class="w-full mb-2 p-2 border rounded"
             />
             <button
-              on:click={addCustomItem}
+              onclick={addCustomItem}
               class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700"
             >
               Hinzufügen
@@ -285,7 +281,7 @@
             <div class="flex items-center gap-3">
               {#if activeTab === categories.length - 1}
                 <button
-                  on:click={() => deleteCustomItem(itemIndex)}
+                  onclick={() => deleteCustomItem(itemIndex)}
                   class="p-2 text-red-500 hover:bg-red-50 rounded"
                 >
                   <Trash2 size={18} />
@@ -293,7 +289,7 @@
               {/if}
               
               <button
-                on:click={() => updateQuantity(activeTab, itemIndex, -1)}
+                onclick={() => updateQuantity(activeTab, itemIndex, -1)}
                 disabled={(quantities[`${activeTab}-${itemIndex}`] || 0) === 0}
                 class="p-2 rounded-full bg-red-500 text-white hover:bg-red-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
               >
@@ -305,7 +301,7 @@
               </span>
               
               <button
-                on:click={() => updateQuantity(activeTab, itemIndex, 1)}
+                onclick={() => updateQuantity(activeTab, itemIndex, 1)}
                 class="p-2 rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors"
               >
                 <Plus size={20} />
@@ -330,7 +326,7 @@
           <h2 class="text-2xl font-bold">Gesamtsumme</h2>
         </div>
         <button
-          on:click={resetAll}
+          onclick={resetAll}
           class="flex items-center gap-2 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors"
         >
           <Trash2 size={18} />
@@ -339,8 +335,8 @@
       </div>
       
       <div class="flex justify-between items-center">
-        <span class="text-lg opacity-90">{totalItems} Artikel</span>
-        <span class="text-4xl font-bold">{totalAmount.toFixed(2)} €</span>
+        <span class="text-lg opacity-90">{totalItems()} Artikel</span>
+        <span class="text-4xl font-bold">{totalAmount().toFixed(2)} €</span>
       </div>
     </div>
   </div>
