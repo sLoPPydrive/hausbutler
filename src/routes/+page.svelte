@@ -208,7 +208,7 @@
 </script>
 
 <svelte:head>
-  <title>🏖️ Hausbutler</title>
+  <title>Hubertus Hausbutler</title>
   <meta name="description" content="Digitaler Hausbutler für Ferienwohnungen" />
   <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#4f46e5" />
@@ -220,7 +220,7 @@
     
     <!-- Header -->
     <div class="bg-white shadow-lg p-6">
-      <h1 class="text-3xl font-bold text-indigo-900 mb-2">🏖️ Hausbutler</h1>
+      <h1 class="text-3xl font-bold text-indigo-900 mb-2">Hubertus Hausbutler</h1>
       <p class="text-gray-600">Erfassen Sie Ihren Verbrauch während Ihres Aufenthalts</p>
     </div>
 
