@@ -261,45 +261,48 @@
 
       <div class="space-y-3">
         {#each categories[activeTab]?.items || [] as item, itemIndex}
-          <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-            <div class="flex-1">
-              <h3 class="font-semibold text-gray-900">{item.name}</h3>
-              <p class="text-indigo-600 font-medium">{item.price.toFixed(2)} €</p>
-            </div>
-            
-            <div class="flex items-center gap-3">
-              {#if activeTab === categories.length - 1}
+          <div class="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+            <div class="flex items-center justify-between">
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900">{item.name}</h3>
+                <p class="text-indigo-600 font-medium">{item.price.toFixed(2)} €</p>
+              </div>
+
+              <div class="flex items-center gap-3">
+                {#if activeTab === categories.length - 1}
+                  <button
+                    onclick={() => deleteCustomItem(itemIndex)}
+                    class="p-2 text-red-500 hover:bg-red-50 rounded"
+                  >
+                    <Trash2 size={18} />
+                  </button>
+                {/if}
+
                 <button
-                  onclick={() => deleteCustomItem(itemIndex)}
-                  class="p-2 text-red-500 hover:bg-red-50 rounded"
+                  onclick={() => updateQuantity(activeTab, itemIndex, -1)}
+                  disabled={(quantities[`${activeTab}-${itemIndex}`] || 0) === 0}
+                  class="p-2 rounded-full bg-red-500 text-white hover:bg-red-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
                 >
-                  <Trash2 size={18} />
+                  <Minus size={20} />
                 </button>
-              {/if}
-              
-              <button
-                onclick={() => updateQuantity(activeTab, itemIndex, -1)}
-                disabled={(quantities[`${activeTab}-${itemIndex}`] || 0) === 0}
-                class="p-2 rounded-full bg-red-500 text-white hover:bg-red-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
-              >
-                <Minus size={20} />
-              </button>
-              
-              <span class="text-xl font-bold w-12 text-center">
-                {quantities[`${activeTab}-${itemIndex}`] || 0}
-              </span>
-              
-              <button
-                onclick={() => updateQuantity(activeTab, itemIndex, 1)}
-                class="p-2 rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors"
-              >
-                <Plus size={20} />
-              </button>
-              
-              <span class="ml-2 text-gray-600 font-medium w-20 text-right">
-                {(item.price * (quantities[`${activeTab}-${itemIndex}`] || 0)).toFixed(2)} €
-              </span>
+
+                <span class="text-xl font-bold w-12 text-center">
+                  {quantities[`${activeTab}-${itemIndex}`] || 0}
+                </span>
+
+                <button
+                  onclick={() => updateQuantity(activeTab, itemIndex, 1)}
+                  class="p-2 rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors"
+                >
+                  <Plus size={20} />
+                </button>
+              </div>
             </div>
+            {#if (quantities[`${activeTab}-${itemIndex}`] || 0) > 0}
+              <div class="text-right text-gray-600 font-medium mt-1">
+                {(item.price * (quantities[`${activeTab}-${itemIndex}`] || 0)).toFixed(2)} €
+              </div>
+            {/if}
           </div>
         {/each}
       </div>
