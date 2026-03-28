@@ -308,7 +308,7 @@
     </div>
 
     <!-- Summary -->
-    <div class="bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-lg p-6 mb-20">
+    <div class="text-white shadow-lg p-6 mb-20" style="background-color: #5B6E4B;">
       <div class="flex items-center justify-between mb-4">
         <div class="flex items-center gap-2">
           <Receipt size={28} />
