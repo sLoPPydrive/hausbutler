@@ -296,11 +296,9 @@
                 <Plus size={20} />
               </button>
               
-              {#if (quantities[`${activeTab}-${itemIndex}`] || 0) > 0}
-                <span class="ml-2 text-gray-600 font-medium w-20 text-right">
-                  {(item.price * (quantities[`${activeTab}-${itemIndex}`] || 0)).toFixed(2)} €
-                </span>
-              {/if}
+              <span class="ml-2 text-gray-600 font-medium w-20 text-right">
+                {(item.price * (quantities[`${activeTab}-${itemIndex}`] || 0)).toFixed(2)} €
+              </span>
             </div>
           </div>
         {/each}
