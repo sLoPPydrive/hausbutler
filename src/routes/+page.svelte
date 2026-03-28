@@ -198,7 +198,10 @@
     
     <!-- Header -->
     <div class="bg-white shadow-lg p-6">
-      <h1 class="text-3xl font-bold text-indigo-900 mb-2">Hubertus Hausbutler</h1>
+      <div class="flex items-center gap-4 mb-2">
+        <img src="/icon-512.png" alt="Hubertus Hausbutler" class="w-12 h-12" />
+        <h1 class="text-3xl font-bold text-indigo-900">Hubertus Hausbutler</h1>
+      </div>
       <p class="text-gray-600">Erfassen Sie Ihren Verbrauch während Ihres Aufenthalts</p>
     </div>
 
