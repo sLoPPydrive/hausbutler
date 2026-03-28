@@ -193,7 +193,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 </svelte:head>
 
-<div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+<div class="min-h-screen" style="background-color: #fef6db;">
   <div class="max-w-4xl mx-auto">
     
     <!-- Header -->
