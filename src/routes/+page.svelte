@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { browser } from '$app/environment';
-  import { Plus, Minus, Trash2, Receipt, PlusCircle } from 'lucide-svelte';
+  import { Plus, Minus, Trash2, Receipt, PlusCircle, RefreshCw } from 'lucide-svelte';
   import { load as parseYaml } from 'js-yaml';
 
   let categories = $state([]);
@@ -201,6 +201,9 @@
       <div class="flex items-center gap-4 mb-2">
         <img src="/icon-512.png" alt="Hubertus Hausbutler" class="w-12 h-12" />
         <h1 class="text-3xl font-bold text-indigo-900">Hubertus Hausbutler</h1>
+        <button onclick={() => location.reload()} class="ml-auto p-2 text-gray-500 hover:text-indigo-600 hover:bg-gray-100 rounded-full transition-colors">
+          <RefreshCw size={22} />
+        </button>
       </div>
       <p class="text-gray-600">Erfassen Sie Ihren Verbrauch während Ihres Aufenthalts</p>
     </div>
