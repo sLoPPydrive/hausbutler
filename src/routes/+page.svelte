@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { browser } from '$app/environment';
   import { Plus, Minus, Trash2, Receipt, PlusCircle } from 'lucide-svelte';
+  import { load as parseYaml } from 'js-yaml';
 
   let categories = $state([]);
   let activeTab = $state(0);
@@ -116,26 +117,8 @@
   }
 
   function parseYAML(yamlText) {
-    // Einfacher YAML Parser für die Struktur
-    const lines = yamlText.split('\n');
-    const cats = [];
-    let currentCat = null;
-
-    for (let line of lines) {
-      if (line.trim().startsWith('- name:')) {
-        if (currentCat) cats.push(currentCat);
-        currentCat = {
-          name: line.split(':')[1].trim().replace(/['"]/g, ''),
-          items: []
-        };
-      } else if (line.includes('- name:') && currentCat) {
-        const name = line.split('name:')[1].split('price:')[0].trim().replace(/['"]/g, '');
-        const price = parseFloat(line.split('price:')[1].trim());
-        currentCat.items.push({ name, price });
-      }
-    }
-    if (currentCat) cats.push(currentCat);
-    return cats;
+    const data = parseYaml(yamlText);
+    return data.categories;
   }
 
   function updateQuantity(categoryIndex, itemIndex, delta) {
