@@ -327,6 +327,9 @@
         <span class="text-lg opacity-90">{totalItems()} Artikel</span>
         <span class="text-4xl font-bold">{totalAmount().toFixed(2)} €</span>
       </div>
+      <div class="flex justify-center mt-4">
+        <img src="Logo_Bilderbuchbauernhof_RGB_V1_gruen-3.png" alt="Bilderbuchbauernhof Hof und Tenne" class="h-20" />
+      </div>
     </div>
   </div>
 </div>
