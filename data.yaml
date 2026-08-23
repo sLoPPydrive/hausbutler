@@ -68,13 +68,13 @@ categories:
   - name: "Waffeln"
     items:
       - name: "Natur"
-        price: 2.50
-      - name: "mit Puderzucker"
-        price: 2.50
+        price: 2.80
+      - name: "mit Nutella"
+        price: 4.00
       - name: "mit Kirschen oder Eis"
-        price: 3.90
+        price: 4.20
       - name: "mit Kirschen und Eis"
-        price: 4.50
+        price: 5.00
       - name: "Portion Sahne"
         price: 0.50
 
@@ -85,29 +85,29 @@ categories:
       - name: "Eis am Stiel/Hörnchen"
         price: 2.00
       - name: "Kugel Vanilleeis"
-        price: 1.00
+        price: 1.40
 
   - name: "Erlebnis und Erholung"
     items:
       - name: "Kegeln (60 Min.)"
-        price: 9.00
+        price: 10.00
       - name: "Sauna (20 Min.)"
         price: 6.00
       - name: "Fackeln"
-        price: 2.50
+        price: 3.00
 
   - name: "Reiten"
     items:
       - name: "Wanderritt"
         price: 16.00
       - name: "Longenstunde"
-        price: 16.00
+        price: 18.00
       - name: "Freier Ausritt"
-        price: 25.00
+        price: 28.00
 
   - name: "Zusatzleistungen"
     items:
       - name: "Waschmaschine"
-        price: 5.00
+        price: 6.00
       - name: "Trockner"
-        price: 5.00
+        price: 6.00
