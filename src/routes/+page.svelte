@@ -1,8 +1,9 @@
 <script>
   import { onMount } from 'svelte';
   import { browser } from '$app/environment';
-  import { Plus, Minus, Trash2, Receipt, PlusCircle, RefreshCw } from 'lucide-svelte';
+  import { Plus, Minus, Trash2, Receipt, PlusCircle, RefreshCw, FileDown } from 'lucide-svelte';
   import { load as parseYaml } from 'js-yaml';
+  import { generatePurchasePdf } from '$lib/pdf.js';
 
   let categories = $state([]);
   let activeTab = $state(0);
@@ -183,6 +184,13 @@
       categories[categories.length - 1].items = customItems;
     }
   }
+
+  function handleDownloadPdf() {
+    const success = generatePurchasePdf(categories, quantities);
+    if (!success) {
+      alert('Es wurden noch keine Artikel ausgewählt.');
+    }
+  }
 </script>
 
 <svelte:head>
@@ -324,10 +332,19 @@
         </button>
       </div>
       
-      <div class="flex justify-between items-center">
+      <div class="flex justify-between items-center mb-6">
         <span class="text-lg opacity-90">{totalItems()} Artikel</span>
         <span class="text-4xl font-bold">{totalAmount().toFixed(2)} €</span>
       </div>
+
+      <button
+        onclick={handleDownloadPdf}
+        disabled={totalItems() === 0}
+        class="w-full flex items-center justify-center gap-2 py-3 px-4 bg-white text-[#5B6E4B] font-semibold rounded-lg shadow hover:bg-gray-50 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed transition-all cursor-pointer"
+      >
+        <FileDown size={22} />
+        <span>PDF Übersicht herunterladen</span>
+      </button>
     </div>
     <div class="flex justify-center mb-20 pt-4">
       <img src="Logo_Bilderbuchbauernhof_RGB_V1_gruen-3.png" alt="Bilderbuchbauernhof Hof und Tenne" class="h-20" />

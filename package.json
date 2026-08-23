@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "js-yaml": "^4.1.1",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.8",
     "lucide-svelte": "^0.460.1"
   },
   "type": "module"
